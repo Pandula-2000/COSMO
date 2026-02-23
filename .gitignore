@@ -8,3 +8,8 @@ Results/
 Checkpoints/
 **/.ipynb_checkpoints/
 **/__marimo__/
+**/TEST**
+
+# ignore any file with TEST in the name
+**/*TEST*
+**/*test*
