@@ -8,6 +8,10 @@ from . import wire2d
 from . import incode
 from . import finer
 from . import BandRC
+from . import COSMOV2
+from . import COSMOV3
+from . import COSMOV4
+
 
 
 model_dict = {'gauss': gauss,
@@ -19,7 +23,11 @@ model_dict = {'gauss': gauss,
               'ffn': None,
               'incode': incode,
               'finer': finer,
-              'BandRC': BandRC}
+              'BandRC': BandRC,
+              'COSMOV2': COSMOV2,
+              "COSMOV3": COSMOV3,
+              "COSMOV4": COSMOV4
+              }
 
 
 class INR():
