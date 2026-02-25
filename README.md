@@ -60,8 +60,17 @@ COSMO-RC consistently outperforms state-of-the-art activations (SIREN, WIRE, INC
 Create a virtual environment and install the required dependencies.
 
 ```bash
+# Clone the repository
 git clone https://github.com/Pandula-2000/COSMO-INR.git
 cd COSMO-INR
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Create a virtual environment (Optional but recommended)
+python -m venv cosmo_vEnv
+source cosmo_vEnv/bin/activate  # On Windows use: cosmo_vEnv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
+
+## Usage
+python train_image.py
+```
