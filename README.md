@@ -61,8 +61,8 @@ Create a virtual environment and install the required dependencies.
 
 ```bash
 # Clone the repository
-git clone https://github.com/Pandula-2000/COSMO-INR.git
-cd COSMO-INR
+git clone https://github.com/Pandula-2000/COSMO.git
+cd COSMO
 
 # Create a virtual environment (Optional but recommended)
 python -m venv cosmo_vEnv
