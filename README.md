@@ -12,7 +12,7 @@ Implicit neural representations (INRs) offer a continuous alternative to discret
 ## Theoretical Background
 Using harmonic distortion analysis and Chebyshev polynomial approximation, we show that the raised cosine activation offers the least decay for larger polynomial coefficients, providing optimal spectral bandwidth. 
 
-![Architecture Pipeline](readme_images/model.png)
+![Architecture Pipeline](docs/model.png)
 *Figure 1: Complete pipeline of the COSMO-RC model architecture featuring the prior embedding sigmoid regularizer.*
 
 * To prevent the attenuation of symmetric components, we introduce modulating the activation function by a complex sinusoid component.
@@ -38,19 +38,19 @@ COSMO-RC consistently outperforms state-of-the-art activations (SIREN, WIRE, INC
 | NeRF (Lego) | PSNR | **29.50 dB** | 26.05 dB (INCODE) |+3.45 dB |
 
 ### 1. Image Reconstruction
-![Image reconstruction on Kodak 20 image](readme_images/Recons_K20.png)
+![Image reconstruction on Kodak 20 image](docs/Recons_K20.png)
 *Figure 2: Qualitative comparisons for Image Reconstruction*
 
 ### 2. Image Denoising
-![Image denoising on parrot image (Div2K)](readme_images/denoising.png)
+![Image denoising on parrot image (Div2K)](docs/denoising.png)
 *Figure 3: Qualitative comparisons for Image Denoising*
 
 ### 3. Image Inpainting
-![Image Inpainting on spiral knot image](readme_images/inpainting1.png)
+![Image Inpainting on spiral knot image](docs/inpainting1.png)
 *Figure 3: Qualitative comparisons for Image Inpainting*
 
 ### 4. Neural Radiance Fields(NeRF)
-![NeRF](readme_images/nerf_lego.png)
+![NeRF](docs/nerf_lego.png)
 *Figure 4: Qualitative comparisons for NeRF (Lego dataset)*
 
 
