@@ -12,11 +12,11 @@ Implicit neural representations (INRs) offer a continuous alternative to discret
 ## Theoretical Background
 Using harmonic distortion analysis and Chebyshev polynomial approximation, we show that the raised cosine activation offers the least decay for larger polynomial coefficients, providing optimal spectral bandwidth. 
 
-* To prevent the attenuation of symmetric components, we introduce modulating the activation function by a complex sinusoid component.
-* The outputs at each layer are complex-valued and normalized to the unit circle on the complex plane to ensure a stable learning curve. To accelerate convergence, we integrate a task-specific prior knowledge embedder (e.g., ResNet-34 or ResNet3D-18) combined with a sigmoid regularizer to dynamically adjust the $T$ and $\zeta$ parameters.
-
 ![Architecture Pipeline](readme_images/model.png)
 *Figure 1: Complete pipeline of the COSMO-RC model architecture featuring the prior embedding sigmoid regularizer.*
+
+* To prevent the attenuation of symmetric components, we introduce modulating the activation function by a complex sinusoid component.
+* The outputs at each layer are complex-valued and normalized to the unit circle on the complex plane to ensure a stable learning curve. To accelerate convergence, we integrate a task-specific prior knowledge embedder (e.g., ResNet-34 or ResNet3D-18) combined with a sigmoid regularizer to dynamically adjust the $T$ and $\zeta$ parameters.
 
 ## Tasks Tested
 COSMO-RC establishes state-of-the-art performance across diverse signal representation and inverse problems.
@@ -49,9 +49,9 @@ COSMO-RC consistently outperforms state-of-the-art activations (SIREN, WIRE, INC
 ![Image Inpainting on spiral knot image](readme_images/inpainting1.png)
 *Figure 3: Qualitative comparisons for Image Inpainting*
 
-### 4. Image Super Resolution
-![Image Super-resolution](readme_images/6xSupRes.png)
-*Figure 4: Qualitative comparisons for Image Super resolution*
+### 4. Neural Radiance Fields(NeRF)
+![NeRF](readme_images/nerf_lego.png)
+*Figure 4: Qualitative comparisons for NeRF (Lego dataset)*
 
 
 ## Getting Started
