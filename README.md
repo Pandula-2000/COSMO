@@ -10,21 +10,16 @@
 Implicit neural representations (INRs) offer a continuous alternative to discrete signal representations, compactly encoding complex signals across computer vision tasks. However, odd and even symmetric activation functions suffer from attenuation in their post-activation spectrum. We propose COSMO-INR to addresses this limitation. By modulating activation functions using a complex sinusoidal term, the network achieves complete spectral support and mitigates spectral bias.
 
 ## Theoretical Background
-Using harmonic distortion analysis and Chebyshev polynomial approximation, we show that the raised cosine activation offers the least decay for larger coefficients, providing optimal spectral bandwidth. 
+Using harmonic distortion analysis and Chebyshev polynomial approximation, we show that the raised cosine activation offers the least decay for larger polynomial coefficients, providing optimal spectral bandwidth. 
 
-To prevent the attenuation of symmetric components, we define the COSMO-RC activation as:\
-$$g(x)=\phi(x)e^{j\zeta x}$$\
-
-Where $\phi(x)$ is the raised cosine function with a learnable bandwidth $T$ and frequency shift $\zeta$:\
-$$\phi(x)=\text{sinc}\left(\frac{x}{T}\right)\frac{\cos\left(\frac{\pi\beta x}{T}\right)}{1-\left(\frac{2\beta x}{T}\right)^2}$$\
-
-The outputs at each layer are complex-valued and normalized to the unit circle on the complex plane to ensure a stable learning curve. To accelerate convergence, we integrate a task-specific prior knowledge embedder (e.g., ResNet-34 or ResNet3D-18) combined with a sigmoid regularizer to dynamically adjust the $T$ and $\zeta$ parameters.
+* To prevent the attenuation of symmetric components, we introduce modulating the activation function by a complex sinusoid component.
+* The outputs at each layer are complex-valued and normalized to the unit circle on the complex plane to ensure a stable learning curve. To accelerate convergence, we integrate a task-specific prior knowledge embedder (e.g., ResNet-34 or ResNet3D-18) combined with a sigmoid regularizer to dynamically adjust the $T$ and $\zeta$ parameters.
 
 ![Architecture Pipeline](readme_images/model.png)
 *Figure 1: Complete pipeline of the COSMO-RC model architecture featuring the prior embedding sigmoid regularizer.*
 
 ## Tasks Tested
-[cite_start]COSMO-RC establishes state-of-the-art performance across diverse signal representation and inverse problems[cite: 156]:
+COSMO-RC establishes state-of-the-art performance across diverse signal representation and inverse problems.
 * **Image Representation** (Kodak and DIV2K datasets)
 * **Image Denoising** (DIV2K with Poisson photon noise)
 * **Image Super-Resolution** (2x, 4x, and 6x upsampling on DIV2K)
@@ -33,17 +28,31 @@ The outputs at each layer are complex-valued and normalized to the unit circle o
 * **Neural Radiance Fields (NeRF)** (Lego dataset novel-view synthesis)
 
 ## Key Results
-[cite_start]COSMO-RC consistently outperforms state-of-the-art activations (SIREN, WIRE, INCODE, FINER) in accuracy, stability, and high-frequency structural preservation[cite: 577, 921].
+COSMO-RC consistently outperforms state-of-the-art activations (SIREN, WIRE, INCODE, FINER) in accuracy, stability, and high-frequency structural preservation.
 
 | Task | Metric | COSMO-RC | Nearest SOTA | Improvement |
 | :--- | :--- | :---: | :---: | :---: |
-| Image Representation (Kodak) | PSNR | [cite_start]**41.24 dB** [cite: 593] | [cite_start]35.57 dB (INCODE) [cite: 593] | [cite_start]+5.67 dB [cite: 71] |
-| Image Denoising | PSNR | [cite_start]**30.25 dB** [cite: 688] | [cite_start]29.79 dB (INCODE) [cite: 689] | [cite_start]+0.46 dB [cite: 71, 682] |
-| Super-Resolution (6x) | PSNR | [cite_start]**27.66 dB** [cite: 733] | [cite_start]27.02 dB (FINER) [cite: 733] | [cite_start]+0.64 dB [cite: 71] |
-| NeRF (Lego) | PSNR | [cite_start]**29.50 dB** [cite: 913] | [cite_start]26.05 dB (INCODE) [cite: 913] | [cite_start]+3.45 dB [cite: 857] |
+| Image Representation (Kodak) | PSNR | **41.24 dB** | 35.57 dB (INCODE)  | +5.67 dB |
+| Image Denoising | PSNR | **30.25 dB** |29.79 dB (INCODE) | +0.46 dB |
+| Super-Resolution (6x) | PSNR | **27.66 dB** | 27.02 dB (FINER)  | +0.64 dB |
+| NeRF (Lego) | PSNR | **29.50 dB** | 26.05 dB (INCODE) |+3.45 dB |
 
-![Qualitative Results](docs/results_placeholder.png)
-*Figure 2: Qualitative comparisons for Image Denoising and Super-resolution.*
+### 1. Image Reconstruction
+![Image reconstruction on Kodak 20 image](readme_images/Recons_K20.png)
+*Figure 2: Qualitative comparisons for Image Reconstruction*
+
+### 2. Image Denoising
+![Image denoising on parrot image (Div2K)](readme_images/denoising.png)
+*Figure 3: Qualitative comparisons for Image Denoising*
+
+### 3. Image Inpainting
+![Image Inpainting on spiral knot image](readme_images/inpainting1.png)
+*Figure 3: Qualitative comparisons for Image Inpainting*
+
+### 4. Image Super Resolution
+![Image Super-resolution](readme_images/6xSupRes.png)
+*Figure 4: Qualitative comparisons for Image Super resolution*
+
 
 ## Getting Started
 
