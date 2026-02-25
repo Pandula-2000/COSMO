@@ -91,6 +91,5 @@ If you find our work useful in your research, please cite:
 
 ## Contact
 If you have any questions, please feel free to email the authors.
-> [!Mail]
 > pandula66@gmail.com
 
