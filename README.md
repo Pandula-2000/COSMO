@@ -1,10 +1,10 @@
-# COSMO-INR: Complex Sinusoidal Modulation for Implicit Neural Representations
-> **Update:** Accepted at *ICLR 2026*.
-
+# COSMO-INR: Complex Sinusoidal Modulation for Implicit Neural Representations.
 [![Paper](https://img.shields.io/badge/ArXiv-Paper-B31B1B.svg)]([https://arxiv.org/](https://arxiv.org/html/2505.11640v3))
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-Tested-EE4C2C?logo=pytorch)](https://pytorch.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> **Update:** Accepted at *ICLR 2026*.
 
 ## Overview
 Implicit neural representations (INRs) offer a continuous alternative to discrete signal representations, compactly encoding complex signals across computer vision tasks. However, odd and even symmetric activation functions suffer from attenuation in their post-activation spectrum. We propose COSMO-INR to addresses this limitation. By modulating activation functions using a complex sinusoidal term, the network achieves complete spectral support and mitigates spectral bias.
@@ -12,11 +12,11 @@ Implicit neural representations (INRs) offer a continuous alternative to discret
 ## Theoretical Background
 Using harmonic distortion analysis and Chebyshev polynomial approximation, we show that the raised cosine activation offers the least decay for larger coefficients, providing optimal spectral bandwidth. 
 
-To prevent the attenuation of symmetric components, we define the COSMO-RC activation as:
-$$g(x)=\phi(x)e^{j\zeta x}$$
+To prevent the attenuation of symmetric components, we define the COSMO-RC activation as:\
+$$g(x)=\phi(x)e^{j\zeta x}$$\
 
-Where $\phi(x)$ is the raised cosine function with a learnable bandwidth $T$ and frequency shift $\zeta$:
-$$\phi(x)=\text{sinc}\left(\frac{x}{T}\right)\frac{\cos\left(\frac{\pi\beta x}{T}\right)}{1-\left(\frac{2\beta x}{T}\right)^2}$$
+Where $\phi(x)$ is the raised cosine function with a learnable bandwidth $T$ and frequency shift $\zeta$:\
+$$\phi(x)=\text{sinc}\left(\frac{x}{T}\right)\frac{\cos\left(\frac{\pi\beta x}{T}\right)}{1-\left(\frac{2\beta x}{T}\right)^2}$$\
 
 The outputs at each layer are complex-valued and normalized to the unit circle on the complex plane to ensure a stable learning curve. To accelerate convergence, we integrate a task-specific prior knowledge embedder (e.g., ResNet-34 or ResNet3D-18) combined with a sigmoid regularizer to dynamically adjust the $T$ and $\zeta$ parameters.
 
