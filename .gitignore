@@ -13,4 +13,5 @@ Checkpoints/
 # ignore any file with TEST in the name
 **/*TEST*
 **/*test*
-**/COSMOV**
+**/*COSMOV*
+**/*models1*
