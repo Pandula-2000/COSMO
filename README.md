@@ -1,30 +1,28 @@
-# [cite_start]COSMO-INR: Complex Sinusoidal Modulation for Implicit Neural Representations [cite: 56, 57]
+# COSMO-INR: Complex Sinusoidal Modulation for Implicit Neural Representations
+## Official implementation of **"COSMO-INR: COMPLEX SINUSOIDAL MODULATION FOR IMPLICIT NEURAL REPRESENTATIONS"
+> **Update:** Accepted at *ICLR 2026*.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Paper](https://img.shields.io/badge/ArXiv-Paper-B31B1B.svg)]([https://arxiv.org/](https://arxiv.org/html/2505.11640v3))
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-Tested-EE4C2C?logo=pytorch)](https://pytorch.org/)
-[![Paper](https://img.shields.io/badge/ArXiv-Paper-B31B1B.svg)](https://arxiv.org/)
-
-[cite_start]Official implementation of **"COSMO-INR: COMPLEX SINUSOIDAL MODULATION FOR IMPLICIT NEURAL REPRESENTATIONS"**[cite: 56, 57].
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
-[cite_start]Implicit neural representations (INRs) offer a continuous alternative to discrete signal representations, compactly encoding complex signals across computer vision tasks[cite: 60, 61]. [cite_start]However, odd and even symmetric activation functions suffer from attenuation in their post-activation spectrum[cite: 145]. 
-
-COSMO-INR addresses this limitation. [cite_start]By modulating activation functions using a complex sinusoidal term, the network achieves complete spectral support and mitigates spectral bias[cite: 66, 147].
+Implicit neural representations (INRs) offer a continuous alternative to discrete signal representations, compactly encoding complex signals across computer vision tasks. However, odd and even symmetric activation functions suffer from attenuation in their post-activation spectrum. We propose COSMO-INR to addresses this limitation. By modulating activation functions using a complex sinusoidal term, the network achieves complete spectral support and mitigates spectral bias.
 
 ## Theoretical Background
-[cite_start]Using harmonic distortion analysis and Chebyshev polynomial approximation, we show that the raised cosine activation offers the least decay for larger coefficients, providing optimal spectral bandwidth[cite: 301, 311]. 
+Using harmonic distortion analysis and Chebyshev polynomial approximation, we show that the raised cosine activation offers the least decay for larger coefficients, providing optimal spectral bandwidth. 
 
 To prevent the attenuation of symmetric components, we define the COSMO-RC activation as:
-[cite_start]$$g(x)=\phi(x)e^{j\zeta x}$$ [cite: 395]
+$$g(x)=\phi(x)e^{j\zeta x}$$
 
 Where $\phi(x)$ is the raised cosine function with a learnable bandwidth $T$ and frequency shift $\zeta$:
-[cite_start]$$\phi(x)=\text{sinc}\left(\frac{x}{T}\right)\frac{\cos\left(\frac{\pi\beta x}{T}\right)}{1-\left(\frac{2\beta x}{T}\right)^2}$$ [cite: 405, 408, 409, 410]
+$$\phi(x)=\text{sinc}\left(\frac{x}{T}\right)\frac{\cos\left(\frac{\pi\beta x}{T}\right)}{1-\left(\frac{2\beta x}{T}\right)^2}$$
 
-[cite_start]The outputs at each layer are complex-valued and normalized to the unit circle on the complex plane to ensure a stable learning curve[cite: 388]. [cite_start]To accelerate convergence, we integrate a task-specific prior knowledge embedder (e.g., ResNet-34 or ResNet3D-18) combined with a sigmoid regularizer to dynamically adjust the $T$ and $\zeta$ parameters[cite: 507, 508, 510, 512].
+The outputs at each layer are complex-valued and normalized to the unit circle on the complex plane to ensure a stable learning curve. To accelerate convergence, we integrate a task-specific prior knowledge embedder (e.g., ResNet-34 or ResNet3D-18) combined with a sigmoid regularizer to dynamically adjust the $T$ and $\zeta$ parameters.
 
 ![Architecture Pipeline](docs/architecture_placeholder.png)
-[cite_start]*Figure 1: Complete pipeline of the COSMO-RC model architecture featuring the prior embedding sigmoid regularizer[cite: 561].*
+*Figure 1: Complete pipeline of the COSMO-RC model architecture featuring the prior embedding sigmoid regularizer.*
 
 ## Tasks Tested
 [cite_start]COSMO-RC establishes state-of-the-art performance across diverse signal representation and inverse problems[cite: 156]:
