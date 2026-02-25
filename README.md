@@ -74,3 +74,23 @@ pip install -r requirements.txt
 ## Usage
 python train_image.py
 ```
+## Citation
+If you find our work useful in your research, please cite:
+```
+@misc{thennakoon2025cosmoinrcomplexsinusoidalmodulation,
+      title={COSMO-INR: Complex Sinusoidal Modulation for Implicit Neural Representations}, 
+      author={Pandula Thennakoon and Avishka Ranasinghe and Mario De Silva and Buwaneka Epakanda and Roshan Godaliyadda and Parakrama Ekanayake and Vijitha Herath},
+      year={2025},
+      eprint={2505.11640},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2505.11640}, 
+}
+
+```
+
+## Contact
+If you have any questions, please feel free to email the authors.
+> [!Mail]
+> pandula66@gmail.com
+
